@@ -1,10 +1,13 @@
 
-
+#Library Imports
 import os
 from flask import Flask, abort, request,jsonify,json
 
 
+#Initiate the application instance
 app = Flask(__name__)
+
+#Route to (./test) to make the POST request 
 
 @app.route('/test', methods=['GET','POST'])
 def test():
