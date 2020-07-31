@@ -8,8 +8,6 @@ Following packages must be installed before runnning this application
 
 - pip
 - flask 
-
- - pip should be installed on the machine that you will be using to run this Flask app
  
  Install pip using the following [documentation](https://pip.pypa.io/en/stable/installing/)
  
