@@ -42,4 +42,4 @@ curl -X POST http://localhost:5000/test --data '{"string_to_cut": "iamyourlyftdr
 
 The results that I obtained are screenshoted and displayed below. This matches the requirement that was requested by the interview application. 
 
-[IMAGE](./IMG.png)
+![IMAGE](./IMG.png)
