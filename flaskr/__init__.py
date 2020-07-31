@@ -1,34 +1,27 @@
 
 
 import os
+from flask import Flask, abort, request,jsonify,json
 
-from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/test', methods=['GET','POST'])
+def test():
+    string_to_cut = request.json['string_to_cut']
+    result_string = string_parser(string_to_cut)
+    json_obj = {
+        "return_string": result_string,
+    }
+    return json.dumps(json_obj)
+    
+def string_parser(string):
+    result_string = []
+    for i in range(2,len(string),3):
+            result_string.append(string[i])
+    return "".join(result_string)
 
 
-def create_app(test_config=None):
-    # create and configure the app
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
-    )
 
-    if test_config is None:
-        # load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        # load the test config if passed in
-        app.config.from_mapping(test_config)
 
-    # ensure the instance folder exists
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
-
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
-
-    return app
+    
